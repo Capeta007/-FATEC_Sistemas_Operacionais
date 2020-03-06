@@ -97,8 +97,8 @@ public class Pista extends JFrame {
 	public void comecarCorrida() {
 		
 		
-		Thread carro1 = new ThreadCarroDrag("sonic", lbCarro1,775, 30, tfprimeiro, tfsegundo,20, 90);
-		Thread carro2 = new ThreadCarroDrag("knuckles", lbCarro2,775, 30, tfprimeiro, tfsegundo,20, 180);
+		Thread carro1 = new ThreadCarroDrag("sonic", lbCarro1,830, 30, tfprimeiro, tfsegundo,20, 90);
+		Thread carro2 = new ThreadCarroDrag("knuckles", lbCarro2,830, 30, tfprimeiro, tfsegundo,20, 180);
 		carro1.start();
 		carro2.start();
 	}

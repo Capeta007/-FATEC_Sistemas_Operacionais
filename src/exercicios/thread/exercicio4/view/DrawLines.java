@@ -13,8 +13,8 @@ public class DrawLines extends JPanel{
     g.drawLine(70, 50, 70, 250);
     
     
-    for (int i = 0; i < 50; i++) {
-    	if(i%3 == 0) {
+    for (int i = 0; i < 30; i++) {
+    	if(i%2 == 0) {
     		g.drawLine( 800 + i, 50, 800+i, 250);
     	}
 	}

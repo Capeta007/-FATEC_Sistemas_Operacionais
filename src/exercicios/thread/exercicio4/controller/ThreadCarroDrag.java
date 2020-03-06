@@ -41,7 +41,7 @@ public class ThreadCarroDrag extends Thread{
 
 	private void pular() {
 		
-		distanciaPercorrida = 40;
+		distanciaPercorrida = 20;
 		
 		if(car.equals("sonic")) {
 			carro.setIcon(new ImageIcon(getClass().getResource("sonicVelOne.gif")));
