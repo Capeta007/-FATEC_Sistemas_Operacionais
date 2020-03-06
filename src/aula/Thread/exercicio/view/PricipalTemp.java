@@ -1,6 +1,6 @@
-package view;
+package aula.Thread.exercicio.view;
 
-import controller.ThreadTemperaturas;
+import aula.Thread.exercicio.controller.ThreadTemperaturas;
 
 public class PricipalTemp {
 	

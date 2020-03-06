@@ -1,8 +1,6 @@
-package view;
+package aula.Thread.exercicio.view;
 
-import javax.swing.JOptionPane;
-
-import controller.ThreadPegandoId;
+import aula.Thread.exercicio.controller.ThreadPegandoId;
 
 public class PrincipalPegandoId {
 

@@ -1,4 +1,4 @@
-package aula.exemplo.controller;
+package aula.Thread.exemplo.controller;
 
 public class ThreadCalcController extends Thread {
 

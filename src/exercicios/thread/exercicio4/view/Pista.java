@@ -45,6 +45,11 @@ public class Pista extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
+		JButton btReset = new JButton("Reset");
+		btReset.setBounds(150, 4, 124, 43);
+		contentPane.add(btReset);
+		setLocationRelativeTo(null);
+		setVisible(true);
 		
 		construirPlacar();
 		construirCarros();
@@ -66,14 +71,34 @@ public class Pista extends JFrame {
 			}
 		});
 		
+		btReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				tfprimeiro.setText(null);
+				tfsegundo.setText(null);
+				tfprimeiro.setBackground(null);
+				tfsegundo.setBackground(null);
+				ImageIcon icon1 = new ImageIcon(getClass().getResource("sonicEsperando.gif"));
+				ImageIcon icon2 = new ImageIcon(getClass().getResource("knucklesEsperando.gif"));
+				lbCarro1.setBounds(20, 90, 60, 60);
+				lbCarro2.setBounds(20, 180, 60, 60);
+				lbCarro1.setIcon(icon1);
+				lbCarro2.setIcon(icon2);
+				
+
+				super.mouseClicked(e);
+			}
+		});
+		
 	
 	}
 
 	public void comecarCorrida() {
 		
 		
-		Thread carro1 = new ThreadCarroDrag("sonic", lbCarro1,750, 30, tfprimeiro, tfsegundo,80, 90);
-		Thread carro2 = new ThreadCarroDrag("knuckles", lbCarro2,750, 30, tfprimeiro, tfsegundo,80, 180);
+		Thread carro1 = new ThreadCarroDrag("sonic", lbCarro1,775, 30, tfprimeiro, tfsegundo,20, 90);
+		Thread carro2 = new ThreadCarroDrag("knuckles", lbCarro2,775, 30, tfprimeiro, tfsegundo,20, 180);
 		carro1.start();
 		carro2.start();
 	}

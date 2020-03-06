@@ -1,4 +1,4 @@
-package controller;
+package aula.Thread.exercicio.controller;
 
 public class ThreadTemperaturas extends Thread{
 

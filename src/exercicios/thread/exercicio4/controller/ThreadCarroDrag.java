@@ -52,8 +52,9 @@ public class ThreadCarroDrag extends Thread{
 		while(distanciaPercorrida < tamanho) {
 			distanciaPercorrida += (int)(Math.random()*puloMaximo);
 			carro.setLocation(distanciaPercorrida+x, y);
-			if(distanciaPercorrida > 100) {
+			if(distanciaPercorrida > 200) {
 				
+			
 				if(car.equals("sonic")) {
 					carro.setIcon(new ImageIcon(getClass().getResource("sonicVelTwo.gif")));
 				}else {
@@ -62,7 +63,8 @@ public class ThreadCarroDrag extends Thread{
 				
 				
 			}
-			if(distanciaPercorrida > tamanho) {
+			
+			if(distanciaPercorrida+25 > tamanho) {
 				if(car.equals("sonic")) {
 					carro.setIcon(new ImageIcon(getClass().getResource("sonicPassou.gif")));
 				}
@@ -74,6 +76,8 @@ public class ThreadCarroDrag extends Thread{
 				// TODO: handle exception
 			}
 		}
+		
+		
 		
 		try {
 			sleep(300);
@@ -90,11 +94,13 @@ public class ThreadCarroDrag extends Thread{
 			if(car.equals("sonic")) {
 				carro.setIcon(new ImageIcon(getClass().getResource("sonicVenceu.gif")));
 				carro.setLocation(850, y);
+				primeiro.setBackground(Color.BLUE);
 			}else {
 				carro.setIcon(new ImageIcon(getClass().getResource("knucklesVenceu.gif")));
 				carro.setLocation(850, y+22);
+				primeiro.setBackground(Color.RED);
 			}
-			primeiro.setBackground(Color.BLUE);
+			
 		}else {
 			segundo.setText(" "+car);
 			segundo.setFont(new Font("arial", 1, 17));
@@ -102,11 +108,13 @@ public class ThreadCarroDrag extends Thread{
 			if(car.equals("sonic")) {
 				carro.setLocation(850, y+11);
 				carro.setIcon(new ImageIcon(getClass().getResource("sonicPerdeu.gif")));
+				segundo.setBackground(Color.BLUE);
 			}else {
 				carro.setIcon(new ImageIcon(getClass().getResource("knucklesPerdeu.gif")));
 				carro.setLocation(850, y+20);
+				segundo.setBackground(Color.RED);
 			}
-			segundo.setBackground(Color.RED);
+			
 		}
 		
 	}	

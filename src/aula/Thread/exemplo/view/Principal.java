@@ -1,6 +1,6 @@
-package aula.exemplo.view;
+package aula.Thread.exemplo.view;
 
-import aula.exemplo.controller.ThreadCalcController;
+import aula.Thread.exemplo.controller.ThreadCalcController;
 
 public class Principal {
 	
