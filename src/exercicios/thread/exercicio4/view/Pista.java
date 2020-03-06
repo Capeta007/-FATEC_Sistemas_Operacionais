@@ -24,10 +24,12 @@ import java.awt.event.MouseEvent;
 public class Pista extends JFrame {
 
 	private DrawLines contentPane;
-	private JTextField tfprimeiro;
-	private JTextField tfsegundo;
+	private static JTextField tfprimeiro;
+	private static JTextField tfsegundo;
 	private JLabel lbCarro1;
 	private JLabel lbCarro2;
+	private Thread carro1;
+	private Thread carro2;
 
 	public Pista() {
 		
@@ -74,17 +76,20 @@ public class Pista extends JFrame {
 		btReset.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				if(carro1.isAlive() || carro2.isAlive()) {
+					carro1.stop();
+					carro2.stop();
+				}
 
 				tfprimeiro.setText(null);
 				tfsegundo.setText(null);
 				tfprimeiro.setBackground(null);
 				tfsegundo.setBackground(null);
-				ImageIcon icon1 = new ImageIcon(getClass().getResource("sonicEsperando.gif"));
-				ImageIcon icon2 = new ImageIcon(getClass().getResource("knucklesEsperando.gif"));
 				lbCarro1.setBounds(20, 90, 60, 60);
 				lbCarro2.setBounds(20, 180, 60, 60);
-				lbCarro1.setIcon(icon1);
-				lbCarro2.setIcon(icon2);
+				lbCarro1.setIcon(new ImageIcon(getClass().getResource("img/sonicEsperando.gif")));
+				lbCarro2.setIcon(new ImageIcon(getClass().getResource("img/knucklesEsperando.gif")));
 				
 
 				super.mouseClicked(e);
@@ -97,15 +102,15 @@ public class Pista extends JFrame {
 	public void comecarCorrida() {
 		
 		
-		Thread carro1 = new ThreadCarroDrag("sonic", lbCarro1,830, 30, tfprimeiro, tfsegundo,20, 90);
-		Thread carro2 = new ThreadCarroDrag("knuckles", lbCarro2,830, 30, tfprimeiro, tfsegundo,20, 180);
+		carro1 = new ThreadCarroDrag("sonic", lbCarro1,830, 30, tfprimeiro, tfsegundo,20, 90);
+		carro2 = new ThreadCarroDrag("knuckles", lbCarro2,830, 30, tfprimeiro, tfsegundo,20, 180);
 		carro1.start();
 		carro2.start();
 	}
 	
 	public void construirCarros() {
-		ImageIcon icon1 = new ImageIcon(getClass().getResource("sonicEsperando.gif"));
-		ImageIcon icon2 = new ImageIcon(getClass().getResource("knucklesEsperando.gif"));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("img/sonicEsperando.gif"));
+		ImageIcon icon2 = new ImageIcon(getClass().getResource("img/knucklesEsperando.gif"));
 		lbCarro1 = new JLabel(icon1);
 		contentPane.add(lbCarro1);
 		lbCarro2 = new JLabel(icon2);

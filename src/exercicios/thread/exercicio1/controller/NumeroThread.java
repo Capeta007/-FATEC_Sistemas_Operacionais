@@ -1,4 +1,4 @@
-package exercicios.exercicio1.controller;
+package exercicios.thread.exercicio1.controller;
 
 public class NumeroThread extends Thread {
 

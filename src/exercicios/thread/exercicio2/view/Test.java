@@ -1,6 +1,6 @@
-package exercicios.exercicio2.view;
+package exercicios.thread.exercicio2.view;
 
-import exercicios.exercicio2.controller.SomaMatrizThread;
+import exercicios.thread.exercicio2.controller.SomaMatrizThread;
 
 public class Test {
 

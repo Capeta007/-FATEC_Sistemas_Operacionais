@@ -1,8 +1,11 @@
-package view;
+package exercicios.processos.exercicio1.view;
+
+
 
 import javax.swing.JOptionPane;
 
-import controller.RedesController;
+import exercicios.processos.exercicio1.controller.RedesController;
+
 
 public class Main {
 

@@ -1,8 +1,6 @@
-package exercicios.exercicio1.view;
+package exercicios.thread.exercicio1.view;
 
-import javax.xml.stream.events.StartDocument;
-
-import exercicios.exercicio1.controller.NumeroThread;
+import exercicios.thread.exercicio1.controller.NumeroThread;
 
 public class Test {
 

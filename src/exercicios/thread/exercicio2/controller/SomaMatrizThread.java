@@ -1,4 +1,4 @@
-package exercicios.exercicio2.controller;
+package exercicios.thread.exercicio2.controller;
 
 public class SomaMatrizThread extends Thread {
 	

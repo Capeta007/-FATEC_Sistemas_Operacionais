@@ -1,4 +1,4 @@
-package controller;
+package exercicios.processos.exercicio1.controller;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

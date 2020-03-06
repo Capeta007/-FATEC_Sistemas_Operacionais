@@ -34,19 +34,19 @@ public class ThreadCarroDrag extends Thread{
 	@Override
 	public void run() {
 		
-		pular();
+		correr();
 		
 		super.run();
 	}
 
-	private void pular() {
+	private void correr() {
 		
 		distanciaPercorrida = 20;
 		
 		if(car.equals("sonic")) {
-			carro.setIcon(new ImageIcon(getClass().getResource("sonicVelOne.gif")));
+			carro.setIcon(new ImageIcon(getClass().getResource("img/sonicVelOne.gif")));
 		}else {
-			carro.setIcon(new ImageIcon(getClass().getResource("knucklesVelOne.gif")));
+			carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesVelOne.gif")));
 		}
 		
 		while(distanciaPercorrida < tamanho) {
@@ -56,9 +56,9 @@ public class ThreadCarroDrag extends Thread{
 				
 			
 				if(car.equals("sonic")) {
-					carro.setIcon(new ImageIcon(getClass().getResource("sonicVelTwo.gif")));
+					carro.setIcon(new ImageIcon(getClass().getResource("img/sonicVelTwo.gif")));
 				}else {
-					carro.setIcon(new ImageIcon(getClass().getResource("knucklesVelTwo.gif")));
+					carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesVelTwo.gif")));
 				}
 				
 				
@@ -66,7 +66,7 @@ public class ThreadCarroDrag extends Thread{
 			
 			if(distanciaPercorrida+25 > tamanho) {
 				if(car.equals("sonic")) {
-					carro.setIcon(new ImageIcon(getClass().getResource("sonicPassou.gif")));
+					carro.setIcon(new ImageIcon(getClass().getResource("img/sonicPassou.gif")));
 				}
 			}
 			
@@ -86,17 +86,23 @@ public class ThreadCarroDrag extends Thread{
 		}
 		
 		
+		registrar();
+		
+		
+	}
+	
+	private void registrar() {
 		
 		if(primeiro.getText().isEmpty()) {
 			primeiro.setText(" "+car);
 			primeiro.setFont(new Font("arial", 1, 17));
 			
 			if(car.equals("sonic")) {
-				carro.setIcon(new ImageIcon(getClass().getResource("sonicVenceu.gif")));
+				carro.setIcon(new ImageIcon(getClass().getResource("img/sonicVenceu.gif")));
 				carro.setLocation(850, y);
 				primeiro.setBackground(Color.BLUE);
 			}else {
-				carro.setIcon(new ImageIcon(getClass().getResource("knucklesVenceu.gif")));
+				carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesVenceu.gif")));
 				carro.setLocation(850, y+22);
 				primeiro.setBackground(Color.RED);
 			}
@@ -107,15 +113,14 @@ public class ThreadCarroDrag extends Thread{
 			
 			if(car.equals("sonic")) {
 				carro.setLocation(850, y+11);
-				carro.setIcon(new ImageIcon(getClass().getResource("sonicPerdeu.gif")));
+				carro.setIcon(new ImageIcon(getClass().getResource("img/sonicPerdeu.gif")));
 				segundo.setBackground(Color.BLUE);
 			}else {
-				carro.setIcon(new ImageIcon(getClass().getResource("knucklesPerdeu.gif")));
+				carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesPerdeu.gif")));
 				carro.setLocation(850, y+20);
 				segundo.setBackground(Color.RED);
 			}
 			
 		}
-		
-	}	
+	}
 }

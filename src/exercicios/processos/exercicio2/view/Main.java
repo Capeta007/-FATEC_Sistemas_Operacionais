@@ -1,6 +1,6 @@
-package view;
+package exercicios.processos.exercicio2.view;
 
-import controller.ProcessosController;
+import exercicios.processos.exercicio2.controller.ProcessosController;
 
 public class Main {
 
