@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class ThreadCarroDrag extends Thread{
+public class ThreadCarroDrag extends Thread {
 
 	private String car;
 	private int tamanho;
@@ -19,8 +19,9 @@ public class ThreadCarroDrag extends Thread{
 	private JLabel carro;
 	private int y;
 	private int x;
-	
-	public ThreadCarroDrag(String car, JLabel carro ,int tamanho, int puloMaximo, JTextField primeiro, JTextField segundo, int x, int y) {
+
+	public ThreadCarroDrag(String car, JLabel carro, int tamanho, int puloMaximo, JTextField primeiro,
+			JTextField segundo, int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -34,96 +35,88 @@ public class ThreadCarroDrag extends Thread{
 
 	@Override
 	public void run() {
-		
-		
-			correr();
 
-		
+		correr();
+
 		super.run();
 	}
 
 	private void correr() {
-		
+
 		distanciaPercorrida = 20;
-		
-		if(car.equals("sonic")) {
+
+		if (car.equals("sonic")) {
 			carro.setIcon(new ImageIcon(getClass().getResource("img/sonicVelOne.gif")));
-		}else {
+		} else {
 			carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesVelOne.gif")));
 		}
-		
-		while(distanciaPercorrida < tamanho) {
-			distanciaPercorrida += (int)(Math.random()*puloMaximo);
-			carro.setLocation(distanciaPercorrida+x, y);
-			if(distanciaPercorrida > 200) {
-				
-			
-				if(car.equals("sonic")) {
+
+		while (distanciaPercorrida < tamanho) {
+			distanciaPercorrida += (int) (Math.random() * puloMaximo);
+			carro.setLocation(distanciaPercorrida + x, y);
+			if (distanciaPercorrida > 200) {
+
+				if (car.equals("sonic")) {
 					carro.setIcon(new ImageIcon(getClass().getResource("img/sonicVelTwo.gif")));
-				}else {
+				} else {
 					carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesVelTwo.gif")));
 				}
-				
-				
+
 			}
-			
-			if(distanciaPercorrida+25 > tamanho) {
-				if(car.equals("sonic")) {
+
+			if (distanciaPercorrida + 25 > tamanho) {
+				if (car.equals("sonic")) {
 					carro.setIcon(new ImageIcon(getClass().getResource("img/sonicPassou.gif")));
 				}
 			}
-			
+
 			try {
 				sleep(100);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
-		
-		
-		
+
 		try {
 			sleep(300);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-		
+
 		registrar();
-		
-		
+
 	}
-	
+
 	private void registrar() {
-		
-		if(primeiro.getText().isEmpty()) {
-			primeiro.setText(" "+car);
+
+		if (primeiro.getText().isEmpty()) {
+			primeiro.setText(" " + car);
 			primeiro.setFont(new Font("arial", 1, 17));
-			
-			if(car.equals("sonic")) {
+
+			if (car.equals("sonic")) {
 				carro.setIcon(new ImageIcon(getClass().getResource("img/sonicVenceu.gif")));
 				carro.setLocation(850, y);
 				primeiro.setBackground(Color.BLUE);
-			}else {
+			} else {
 				carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesVenceu.gif")));
-				carro.setLocation(850, y+22);
+				carro.setLocation(850, y + 22);
 				primeiro.setBackground(Color.RED);
 			}
-			
-		}else {
-			segundo.setText(" "+car);
+
+		} else {
+			segundo.setText(" " + car);
 			segundo.setFont(new Font("arial", 1, 17));
-			
-			if(car.equals("sonic")) {
-				carro.setLocation(850, y+11);
+
+			if (car.equals("sonic")) {
+				carro.setLocation(850, y + 11);
 				carro.setIcon(new ImageIcon(getClass().getResource("img/sonicPerdeu.gif")));
 				segundo.setBackground(Color.BLUE);
-			}else {
+			} else {
 				carro.setIcon(new ImageIcon(getClass().getResource("img/knucklesPerdeu.gif")));
-				carro.setLocation(850, y+20);
+				carro.setLocation(850, y + 20);
 				segundo.setBackground(Color.RED);
 			}
-			
+
 		}
 	}
 }
