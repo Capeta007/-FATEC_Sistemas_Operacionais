@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.Semaphore;
 
 public class Pista extends JFrame {
 
@@ -33,7 +34,9 @@ public class Pista extends JFrame {
 
 	public Pista() {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		
+	
 		setSize(1000, 400);
 		contentPane = new DrawLines();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,13 +65,14 @@ public class Pista extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				tfprimeiro.setText(null);
-				tfsegundo.setText(null);
-				tfprimeiro.setBackground(null);
-				tfsegundo.setBackground(null);
+				        	tfprimeiro.setText(null);
+							tfsegundo.setText(null);
+							tfprimeiro.setBackground(null);
+							tfsegundo.setBackground(null);
+							
+							comecarCorrida();
+							
 				
-				comecarCorrida();
-
 				super.mouseClicked(e);
 			}
 		});
@@ -100,7 +104,6 @@ public class Pista extends JFrame {
 	}
 
 	public void comecarCorrida() {
-		
 		
 		carro1 = new ThreadCarroDrag("sonic", lbCarro1,830, 30, tfprimeiro, tfsegundo,20, 90);
 		carro2 = new ThreadCarroDrag("knuckles", lbCarro2,830, 30, tfprimeiro, tfsegundo,20, 180);

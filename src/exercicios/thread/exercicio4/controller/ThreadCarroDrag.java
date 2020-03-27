@@ -2,6 +2,7 @@ package exercicios.thread.exercicio4.controller;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.concurrent.Semaphore;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -34,7 +35,9 @@ public class ThreadCarroDrag extends Thread{
 	@Override
 	public void run() {
 		
-		correr();
+		
+			correr();
+
 		
 		super.run();
 	}

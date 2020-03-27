@@ -5,14 +5,14 @@ import java.util.concurrent.Semaphore;
 import exercicios.thread.exercicio7.controller.ThreadCarro;
 
 
-public class TreinoFormula1 {
+public class Cruzamento {
 	
 	public static void main(String[] args) {
 		
 		String[] direcoes = new String[] {"N","S","L","O"};
 		Semaphore sema = new Semaphore(1);
 		
-		for (int i = 1; i <= 1000; i++) {
+		for (int i = 1; i <= 10; i++) {
 			Thread tc = new ThreadCarro(i, direcoes[((int)((Math.random()*4)))], sema);
 			tc.start();
 		}
