@@ -69,7 +69,7 @@ public class TelaGerenciador extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Identificador", "Nome da Sessão", "Sessão", "Memoria"
+                "Nome", "Identificador", "Nome da Sessï¿½o", "Sessï¿½o", "Memoria"
             }
         ));
         tbProcessos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -240,7 +240,7 @@ public class TelaGerenciador extends javax.swing.JFrame {
 		} else if (SISTEMA.contains("Linux")) {
 			for (String processo : processos) {
 
-				dtm.addRow(new Object[] { processo.substring(24, 39), null, null, null, null });
+				dtm.addRow(new Object[]{processo.substring(24, processo.length()), processo.substring(0, 5) , null, null, null});
 
 			}
 		}
