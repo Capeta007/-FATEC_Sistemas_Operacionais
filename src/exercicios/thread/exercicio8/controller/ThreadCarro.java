@@ -1,6 +1,5 @@
 package exercicios.thread.exercicio8.controller;
 
-import java.sql.Time;
 import java.util.concurrent.Semaphore;
 
 import exercicios.thread.exercicio8.entities.Carro;

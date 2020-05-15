@@ -1,6 +1,5 @@
 package exercicios.thread.exercicio8.entities;
 
-import java.text.DecimalFormat;
 import java.util.concurrent.Semaphore;
 
 public class Carro{
