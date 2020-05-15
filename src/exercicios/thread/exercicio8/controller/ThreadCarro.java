@@ -3,80 +3,80 @@ package exercicios.thread.exercicio8.controller;
 import java.sql.Time;
 import java.util.concurrent.Semaphore;
 
-public class ThreadCarro extends Thread{
+import exercicios.thread.exercicio8.entities.Carro;
 
-	private Semaphore vagaPista;
-	private Semaphore vagaEquipe;
-	private Semaphore grid;
-	private String escuderia;
-	private int idCarro;
-	
-	public ThreadCarro(String escuderia, int idCarro, Semaphore vagaPista, Semaphore vagaEquipe, Semaphore grid) {
-		
-		this.grid = grid;
-		this.idCarro = idCarro;
-		this.escuderia = escuderia;
-		this.vagaPista = vagaPista;
-		this.vagaEquipe = vagaEquipe;
-	
-		
+public class ThreadCarro extends Thread {
+
+	private static Semaphore vagasPista = new Semaphore(5);
+	private static Semaphore vagaGrid = new Semaphore(1);
+	private Carro car;
+
+	public ThreadCarro(Carro car) {
+		this.car = car;
 	}
-	
+
 	@Override
 	public void run() {
-		
+
 		try {
-			vagaEquipe.acquire();
+			car.getVagaEquipe().acquire();
 			verificarVagaPista();
-			
+
 		} catch (Exception e) {
-			
-		}finally {
-			vagaEquipe.release();
+
+		} finally {
+			car.getVagaEquipe().release();
 		}
-		
+
 		super.run();
 	}
 
 	private void verificarVagaPista() {
-		
+
 		try {
-			vagaPista.acquire();
-			long inicio = System.currentTimeMillis();
-			correr();
-			long fim  = System.currentTimeMillis();  
-			System.out.println( "O carro " + idCarro + " da equipe " + escuderia + " ficou com tempo: " + ((fim - inicio)/1000) + " Galvão");
-			double tempo = fim - inicio;
-			grid.acquire();
-			GridDeLargada.placar(escuderia, idCarro, tempo);
+			vagasPista.acquire();
+			System.err.println("O Carro " + car.getIdCarro() + " da equipe " + car.getEscuderia() + " está na pista");
+			long inicio;
+			long fim;
+			for (int i = 1; i <= 3; i++) {
+
+			    inicio = System.currentTimeMillis();
+				correr();
+				fim = System.currentTimeMillis();
+				
+				System.out.println("O carro " + car.getIdCarro() + " da equipe " + car.getEscuderia() + " ficou com tempo: "
+						+ (fim-inicio) + "s na " + i + "° volta");
+				if(car.getTimeAbsolut() == 0 || car.getTimeAbsolut() > (fim - inicio)) {
+					car.setTime(fim - inicio);
+				}
+			}
+			
+
+			GridDeLargada.placar(car);
 		} catch (Exception e) {
-			System.err.println("Erro" + e);
-		}finally {
-			vagaPista.release();
-			grid.release();
+			e.printStackTrace();
+		} finally {
+			vagasPista.release();
 		}
-		
-		
+
 	}
 
 	private void correr() {
-		System.out.println("O Carro " + idCarro + " da equipe " + escuderia + " está na pista galvão");
 		int tamanhoDaPista = 1000;
 		int totalPercorrido = 0;
-		
-		
-		while((tamanhoDaPista*3) > totalPercorrido) {
+
+		while (tamanhoDaPista > totalPercorrido) {
+
 			
-			totalPercorrido += (int)((Math.random()*400)+1);
+			totalPercorrido += (int) ((Math.random() * 400) + 1);
+
 			
 			try {
 				sleep(1000);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
-		
-		
-		
+
 	}
 }
