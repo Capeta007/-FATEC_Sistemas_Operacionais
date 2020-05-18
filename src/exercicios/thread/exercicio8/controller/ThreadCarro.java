@@ -22,7 +22,7 @@ public class ThreadCarro extends Thread {
 			verificarVagaPista();
 
 		} catch (Exception e) {
-
+            e.printStackTrace();
 		} finally {
 			car.getVagaEquipe().release();
 		}
@@ -44,7 +44,7 @@ public class ThreadCarro extends Thread {
 				fim = System.currentTimeMillis();
 				
 				System.out.println("O carro " + car.getIdCarro() + " da equipe " + car.getEscuderia() + " ficou com tempo: "
-						+ (fim-inicio) + "s na " + i + "° volta");
+						+ (fim-inicio) + "ms na " + i + "° volta");
 				if(car.getTimeAbsolut() == 0 || car.getTimeAbsolut() > (fim - inicio)) {
 					car.setTime(fim - inicio);
 				}
@@ -61,7 +61,7 @@ public class ThreadCarro extends Thread {
 	}
 
 	private void correr() {
-		int tamanhoDaPista = 1000;
+		int tamanhoDaPista = 4309;
 		int totalPercorrido = 0;
 
 		while (tamanhoDaPista > totalPercorrido) {
@@ -71,7 +71,7 @@ public class ThreadCarro extends Thread {
 
 			
 			try {
-				sleep(1000);
+				sleep(100);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}

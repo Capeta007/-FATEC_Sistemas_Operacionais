@@ -13,7 +13,7 @@ public class TreinoFormula1 {
 	    String[] escuderias = {"Mercedes", "Ferrari", "RBR-Honda", "McLaren-Renault", "Renault", "Alpha Touri-Honda", "Alpha-Romeo"};
 	    Thread carro;
 	    int i = 0;
-	    for (String escuderia : escuderias) {
+	    for (String escuderia : escuderias) {   	
 	    	Semaphore vagaEquipe = new Semaphore(1);
 	    	carro = new ThreadCarro(new Carro(escuderia, i, vagaEquipe));
 			carro.start();
