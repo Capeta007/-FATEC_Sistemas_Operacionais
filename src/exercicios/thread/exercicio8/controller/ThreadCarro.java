@@ -3,6 +3,7 @@ package exercicios.thread.exercicio8.controller;
 import java.util.concurrent.Semaphore;
 
 import exercicios.thread.exercicio8.entities.Carro;
+import exercicios.thread.exercicio8.view.TreinoFormula1;
 
 public class ThreadCarro extends Thread {
 
@@ -12,7 +13,8 @@ public class ThreadCarro extends Thread {
 
 	public ThreadCarro(Carro car) {
 		this.car = car;
-	}
+	}	
+	//
 
 	@Override
 	public void run() {
@@ -33,12 +35,14 @@ public class ThreadCarro extends Thread {
 	private void verificarVagaPista() {
 
 		try {
+			//limita o acesso no recurso pista
 			vagasPista.acquire();
 			System.err.println("O Carro " + car.getIdCarro() + " da equipe " + car.getEscuderia() + " está na pista");
 			long inicio;
 			long fim;
 			for (int i = 1; i <= 3; i++) {
-
+				
+				//set no inicio o tempo do sistema em milissegundos;
 			    inicio = System.currentTimeMillis();
 				correr();
 				fim = System.currentTimeMillis();
@@ -51,7 +55,7 @@ public class ThreadCarro extends Thread {
 			}
 			
 
-			GridDeLargada.placar(car);
+			TreinoFormula1.placar(car);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -64,6 +68,7 @@ public class ThreadCarro extends Thread {
 		int tamanhoDaPista = 4309;
 		int totalPercorrido = 0;
 
+		//Percorre incremento de forma aleatoria o totalPercorrido até que satisfaça a condição de:
 		while (tamanhoDaPista > totalPercorrido) {
 
 			
