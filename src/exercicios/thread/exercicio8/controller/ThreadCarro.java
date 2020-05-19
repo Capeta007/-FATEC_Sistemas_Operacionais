@@ -54,12 +54,13 @@ public class ThreadCarro extends Thread {
 				}
 			}
 			
-
+            vagaGrid.acquire();
 			TreinoFormula1.placar(car);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			vagasPista.release();
+			vagaGrid.release();
 		}
 
 	}

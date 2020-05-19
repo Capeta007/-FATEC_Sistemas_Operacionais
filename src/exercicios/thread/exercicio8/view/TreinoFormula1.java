@@ -42,6 +42,7 @@ public class TreinoFormula1 {
 					}
 				}
 			}
+			
 			int grid = 1;
 			System.out.println();
 			System.err.println("Grid de largada: ");
